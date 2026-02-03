@@ -1,3 +1,4 @@
+import './App.css'
 import { useMemo, useState } from 'react';
 import QuestionCard from './components/QuestionCard';
 import YippieScreen from './components/YippieScreen';
@@ -20,8 +21,10 @@ export default function App() {
     <div
       style={{
         minHeight: '100vh',
-        display: 'grid',
-        placeItems: 'center',
+        width: '100vw',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
         padding: 20,
       }}
     >
