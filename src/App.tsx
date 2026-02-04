@@ -5,6 +5,30 @@ import YippieScreen from './components/YippieScreen';
 
 type Screen = 'question' | 'yippie';
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
+
+async function notifyAnswer(answer: 'yes' | 'no') {
+  console.log('[notifyAnswer] sending:', answer);
+  console.log('[notifyAnswer] API_BASE:', API_BASE);
+
+  try {
+    const res = await fetch(`${API_BASE}/api/answer`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ answer }),
+    });
+
+    console.log('[notifyAnswer] response status:', res.status);
+
+    const data = await res.json();
+    console.log('[notifyAnswer] response body:', data);
+  } catch (err) {
+    console.error('[notifyAnswer] fetch failed:', err);
+  }
+}
+
+
 const clamp = (n: number, min: number, max: number) =>
   Math.max(min, Math.min(max, n));
 
